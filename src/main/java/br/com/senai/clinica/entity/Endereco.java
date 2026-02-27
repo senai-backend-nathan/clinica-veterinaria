@@ -1,17 +1,29 @@
 package br.com.senai.clinica.entity;
 
+
+
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Endereco {
     private Long id;
+    @Size(min = 8, max = 8, message = "Um CEP deve conter 8 caracteres")
     private String cep;
+    @NotBlank @Size(min= 10, max = 100)
     private String logradouro;
+    @Size(min = 2, max = 2)
     private String uf;
+    @NotBlank
     private String bairro;
+    @Size (min = 2, max = 6)
     private String numero;
+    @Size (max = 100)
     private String complemento;
+    @Size (max = 100)
     private String referencia;
+    @NotBlank
     private Boolean principal;
     
     public Long getId() {

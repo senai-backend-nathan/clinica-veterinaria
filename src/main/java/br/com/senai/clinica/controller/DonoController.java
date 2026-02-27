@@ -16,6 +16,7 @@ import br.com.senai.clinica.entity.Dono;
 
 import br.com.senai.clinica.exception.Response;
 import br.com.senai.clinica.repository.DonoRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Dono")
@@ -24,7 +25,7 @@ public class DonoController {
     private DonoRepository repository;
 
     @PostMapping
-    public Response createDono(@RequestBody Dono dono) {
+    public Response createDono(@Valid@RequestBody Dono dono) {
         repository.save(dono);
         return new Response(201, "Dono criado com sucesso");
 
@@ -36,7 +37,7 @@ public class DonoController {
     }
 
     @PutMapping("{/id}")
-    public Response updateDono(@PathVariable Long id, @RequestBody Dono updated) {
+    public Response updateDono(@Valid @PathVariable Long id, @RequestBody Dono updated) {
         if (!repository.existsById(id)) {
             return new Response(407, "Dono não encontrado");
         }

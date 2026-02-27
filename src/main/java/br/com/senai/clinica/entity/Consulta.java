@@ -8,12 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+
+import jakarta.validation.constraints.Size;
+
+
 @Entity
 public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Size (min = 8)
     private LocalDateTime data_hora;
 
     public Long getId() {

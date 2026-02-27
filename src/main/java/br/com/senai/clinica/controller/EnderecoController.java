@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica.entity.Endereco;
 import br.com.senai.clinica.exception.Response;
 import br.com.senai.clinica.repository.EnderecoRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Endereco")
@@ -23,7 +24,7 @@ public class EnderecoController {
     private EnderecoRepository repository;
 
     @PostMapping
-    public Response createEndereco(@RequestBody Endereco endereco) {
+    public Response createEndereco(@Valid@RequestBody Endereco endereco) {
         repository.save(endereco);
         return new Response(201, "Endereco criado com sucesso");
 

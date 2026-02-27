@@ -1,10 +1,12 @@
 package br.com.senai.clinica.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Telefone {
     private Long id; 
+    @Size (min = 10, max = 15)
     private String  numero;
     public Long getId() {
         return id;

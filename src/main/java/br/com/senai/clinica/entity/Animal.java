@@ -6,6 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 @Entity
 public class Animal {
     
@@ -14,12 +18,20 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+    @NotBlank
     private String nome;
+
     private String especie;
     private String raca;
+    
+    @Positive
     private Integer idade;
+    @Size ( max = 200, message = "Informações medicas devem conter no maximo 200 caracteres")
     private String infos_medicas;
+    @NotBlank
     private Boolean status;
+
     public Long getId() {
         return id;
     }

@@ -16,6 +16,7 @@ import br.com.senai.clinica.entity.Consulta;
 import br.com.senai.clinica.exception.Response;
 
 import br.com.senai.clinica.repository.ConsultaRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Consulta")
@@ -25,7 +26,7 @@ public class ConsultaController {
     private ConsultaRepository repository;
 
     @PostMapping
-    public Response createConsulta(@RequestBody Consulta consulta) {
+    public Response createConsulta(@Valid @RequestBody Consulta consulta) {
         repository.save(consulta);
         return new Response(201, "Consulta criada com sucesso");
 

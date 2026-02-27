@@ -5,13 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 @Entity
 public class Dono {
  @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotBlank
     private String nome;
+    @Size(min = 11, max = 11, message = "Um CPF deve conter 11 caracteres")
     private String cpf;
+    @NotBlank
     private Boolean status;
     
     public Long getId() {

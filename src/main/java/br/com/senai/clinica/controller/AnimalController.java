@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica.entity.Animal;
 import br.com.senai.clinica.exception.Response;
 import br.com.senai.clinica.repository.AnimalRepository;
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +25,7 @@ public class AnimalController {
     private AnimalRepository repository;
 
     @PostMapping
-    public Response createAnimal(@RequestBody Animal animal) {
+    public Response createAnimal(@Valid @RequestBody Animal animal) {
         repository.save(animal);
         return new Response(201, "Animal criado com sucesso");
 

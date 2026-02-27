@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica.entity.Telefone;
 import br.com.senai.clinica.exception.Response;
 import br.com.senai.clinica.repository.TelefoneRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Telefone")
@@ -23,7 +24,7 @@ public class TelefoneController {
     private TelefoneRepository repository;
 
     @PostMapping
-    public Response createTelefone(@RequestBody Telefone consulta) {
+    public Response createTelefone(@Valid @RequestBody Telefone consulta) {
         repository.save(consulta);
         return new Response(201, "Telefone criada com sucesso");
 
