@@ -28,7 +28,7 @@ public class AnimalController {
     public Response createAnimal(@Valid @RequestBody Animal animal) {
         repository.save(animal);
         return new Response(201, "Animal criado com sucesso");
-
+//201 Created : recurso criado com sucesso 
     }
 
     @GetMapping
@@ -40,8 +40,8 @@ public class AnimalController {
     @PutMapping("{/id}")
     public Response updateAnimal(@PathVariable Long id, @RequestBody Animal updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Animal não encontrado");
-
+            return new Response(404, "Animal não encontrado");
+//404 Not Found: recurso não encontrado 
         }
         Animal animal = repository.findById(id).get();
 
@@ -68,6 +68,7 @@ public class AnimalController {
 
         return new Response(200, "Animal atualizado com sucesso");}
          return null;
+         //200 OK: requisição bem sucedida 
 
     }
 
