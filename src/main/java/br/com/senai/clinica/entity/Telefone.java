@@ -1,6 +1,8 @@
 package br.com.senai.clinica.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -8,6 +10,11 @@ public class Telefone {
     private Long id; 
     @Size (min = 10, max = 15)
     private String  numero;
+@ManyToOne
+@JoinColumn(name = "fk_dono")
+private Dono dono; 
+
+
     public Long getId() {
         return id;
     }
@@ -19,6 +26,12 @@ public class Telefone {
     }
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+    public Dono getDono() {
+        return dono;
+    }
+    public void setDono(Dono dono) {
+        this.dono = dono;
     }
 
     

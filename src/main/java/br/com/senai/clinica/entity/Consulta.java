@@ -2,13 +2,13 @@ package br.com.senai.clinica.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 
 
@@ -19,6 +19,8 @@ public class Consulta {
     private Long id;
     @Size (min = 8)
     private LocalDateTime data_hora;
+    @OneToMany(mappedBy = "consulta")
+    private List<VeterinarioConsulta> veterinarioConsultas;
 
     public Long getId() {
         return id;

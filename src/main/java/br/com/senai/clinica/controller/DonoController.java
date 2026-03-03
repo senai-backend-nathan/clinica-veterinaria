@@ -26,6 +26,10 @@ public class DonoController {
 
     @PostMapping
     public Response createDono(@Valid@RequestBody Dono dono) {
+        boolean cpfJaExiste = repository.existsByCpf(dono.getCpf());
+        if (cpfJaExiste) {
+            return new Response(409, "Já existe um dono cadastrado com esse cpf");
+        }
         repository.save(dono);
         return new Response(201, "Dono criado com sucesso");
 

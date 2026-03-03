@@ -29,6 +29,12 @@ public class VeterinarioController {
 
     @PostMapping
     public Response createVeterinario(@Valid @RequestBody Veterinario veterinario) {
+
+        boolean crmvJaExiste = repository.existsByCrmv(veterinario.getCrmv());
+    if (crmvJaExiste){
+        return new Response(409, "Ja existe um veterinario com ese nome");
+    }
+
         repository.save(veterinario);
         return new Response(201, "Veterinario criada com sucesso");
 
@@ -45,7 +51,7 @@ public class VeterinarioController {
             return new Response(407, "Veterinario não encontrada");
         }
 
-        Veterinario veterinario = repository.findById(id).get();
+        Veterinario veterinario =  repository.findById(id).get();
 
         if (updated.getCrmv() != null) {
             veterinario.setCrmv(updated.getCrmv());
