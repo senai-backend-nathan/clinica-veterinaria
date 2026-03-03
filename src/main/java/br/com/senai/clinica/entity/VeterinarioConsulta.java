@@ -41,6 +41,14 @@ public class VeterinarioConsulta {
     public void setObsMedicas(String obsMedicas) {
         this.obsMedicas = obsMedicas;
     }
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
+    }
     
     
 }

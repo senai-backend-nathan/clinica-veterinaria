@@ -35,10 +35,10 @@ public class EnderecoController {
         return repository.findAll();
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateEndereco(@PathVariable Long id, @RequestBody Endereco updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Endereco não encontrado");
+            return new Response(404, "Endereco não encontrado");
         }
 
         Endereco endereco = repository.findById(id).get();

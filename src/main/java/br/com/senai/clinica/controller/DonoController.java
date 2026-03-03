@@ -40,10 +40,10 @@ public class DonoController {
         return repository.findAll();
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateDono(@Valid @PathVariable Long id, @RequestBody Dono updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Dono não encontrado");
+            return new Response(404, "Dono não encontrado");
         }
 
         Dono dono = repository.findById(id).get();

@@ -3,11 +3,18 @@ package br.com.senai.clinica.entity;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
 public class Endereco {
+     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Size(min = 8, max = 8, message = "Um CEP deve conter 8 caracteres")
     private String cep;
@@ -25,6 +32,10 @@ public class Endereco {
     private String referencia;
     @NotBlank
     private Boolean principal;
+    @ManyToOne
+    @JoinColumn(name = "fk_dono")
+    private Dono dono;
+
     
     public Long getId() {
         return id;
@@ -79,6 +90,14 @@ public class Endereco {
     }
     public void setPrincipal(Boolean principal) {
         this.principal = principal;
+    }
+
+    public Dono getDono() {
+        return dono;
+    }
+
+    public void setDono(Dono dono) {
+        this.dono = dono;
     }
 
     

@@ -38,7 +38,7 @@ public class AnimalController {
 
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateAnimal(@PathVariable Long id, @RequestBody Animal updated) {
         if (!repository.existsById(id)) {
             return new Response(404, "Animal não encontrado");

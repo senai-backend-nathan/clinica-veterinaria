@@ -45,10 +45,10 @@ public class VeterinarioController {
         return repository.findAll();
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateVeterinario(@PathVariable Long id, @RequestBody Veterinario updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Veterinario não encontrada");
+            return new Response(404, "Veterinario não encontrada");
         }
 
         Veterinario veterinario =  repository.findById(id).get();

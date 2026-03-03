@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Size;
 
@@ -21,6 +23,9 @@ public class Consulta {
     private LocalDateTime data_hora;
     @OneToMany(mappedBy = "consulta")
     private List<VeterinarioConsulta> veterinarioConsultas;
+    @ManyToOne
+    @JoinColumn (name = "fk_animal")
+    private Animal animal;
 
     public Long getId() {
         return id;
@@ -36,6 +41,22 @@ public class Consulta {
 
     public void setData_hora(LocalDateTime data_hora) {
         this.data_hora = data_hora;
+    }
+
+    public List<VeterinarioConsulta> getVeterinarioConsultas() {
+        return veterinarioConsultas;
+    }
+
+    public void setVeterinarioConsultas(List<VeterinarioConsulta> veterinarioConsultas) {
+        this.veterinarioConsultas = veterinarioConsultas;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
     

@@ -37,10 +37,10 @@ public class ConsultaController {
         return repository.findAll();
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateConsulta(@PathVariable Long id, @RequestBody Consulta updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Consulta não encontrada");
+            return new Response(404, "Consulta não encontrada");
         }
 
         Consulta consulta = repository.findById(id).get();

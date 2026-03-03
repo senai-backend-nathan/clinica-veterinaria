@@ -35,10 +35,10 @@ public class TelefoneController {
         return repository.findAll();
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("{id}")
     public Response updateTelefone(@PathVariable Long id, @RequestBody Telefone updated) {
         if (!repository.existsById(id)) {
-            return new Response(407, "Telefone não encontrada");
+            return new Response(404, "Telefone não encontrada");
         }
 
         Telefone consulta = repository.findById(id).get();
